@@ -52,19 +52,15 @@ let autoWelcome = async () => {
 
         if (button) {
             await button.click();
+            console.log('Clicked "Write Post"');
         }
-        console.log('Clicked "Write Post"');
-        await sleep(10000);
-        
-        const [postButton] = await page.$x("//button[contains(., 'Post')]");
-        console.log('Found "Post" button');
-
-        if (postButton) {
-            await postButton.click();
-            console.log('Clicked "Post" button');
+        await sleep(5000);
+        const [post] = await page.$x("//button[contains(., 'Post')]");
+        if (post) {
+            await post.click();
+            console.log('DONE: Posted!');
 
         }
-        console.log('DONE: Posted!');
     }
     await postWelcome();
 
